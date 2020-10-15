@@ -60,15 +60,12 @@ export default {
       return { offset: top, scroll: scrollTop, top: box.top, time };
     },
     onScroll() {
-      const { offset, scroll, top, time } = this.getCoords();
+      const { time } = this.getCoords();
       // const offset = this.$el.getBoundingClientRect();
       // const scroll = Math.max(pageYOffset, window.scrollY);
       // const elapsed = scroll / height;
       // const [from, to] = this.range;
       // const time = Math.min(1, from + elapsed / to);
-
-      // eslint-disable-next-line no-console
-      console.log(offset, scroll, top, time);
       this.enabled = time > this.from && time < this.to
     }
   }

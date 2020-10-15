@@ -6,6 +6,7 @@
     <div class="moon fixed top-0 z-6"></div>
     <div class="parallax-group">
       <montains2-component v-bind="layerStyles[0]"></montains2-component>
+      <logo-component v-bind="layerStyles[13]"></logo-component>
       <montains1-component v-bind="layerStyles[1]"></montains1-component>
       <land-component v-bind="layerStyles[2]"></land-component>
       <forest7-component v-bind="layerStyles[3]"></forest7-component>
@@ -44,13 +45,15 @@ import Forest1Component from "./layers/Forest1";
 import Tree2Component from "./layers/Tree2";
 import Tree1Component from "./layers/Tree1";
 import WolfComponent from "./layers/Wolf";
+import LogoComponent from "./layers/Logo";
 
-function place(layer, offset) {
-  return { layer, offset };
+function place(layer, offset, index) {
+  return { layer, offset, index};
 }
 export default {
   components: {
     WolfComponent,
+    LogoComponent,
     Tree1Component,
     Tree2Component,
     Forest1Component,
@@ -68,28 +71,30 @@ export default {
   data() {
     return {
       layers: [
-        place(1, 10),
-        place(1, 10),
-        place(4, 10),
-        place(6, 10),
-        place(9, 10),
-        place(11, 10),
-        place(16, 10),
-        place(18, 10),
-        place(23, 10),
-        place(28, 10),
-        place(35, 10),
-        place(45, 10),
-        place(45, 10)
+        place(1, 10, 2),
+        place(1, 10, 2),
+        place(4, 10, 2),
+        place(6, 10, 2),
+        place(9, 10, 2),
+        place(11, 10, 2),
+        place(16, 10, 2),
+        place(18, 10, 2),
+        place(23, 10, 2),
+        place(28, 10, 2),
+        place(35, 10, 2),
+        place(45, 10, 2),
+        place(45, 10, 2),
+        place(48, 10, 1)
       ],
-      range: [0, 1.1],
-      height: 1600
+      range: [0, 1],
+      height: 2000
     };
   },
   computed: {
     layerStyles() {
-      return this.layers.map(place => ({
+      return this.layers.map((place) => ({
         style: {
+          "z-index": place.index.toString(),
           transform: this.level(place.layer, place.offset)
         }
       }));
