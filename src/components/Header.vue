@@ -81,7 +81,9 @@ export default {
         place(35, 10),
         place(45, 10),
         place(45, 10)
-      ]
+      ],
+      range: [0, 1.1],
+      height: 1600
     };
   },
   computed: {
@@ -100,17 +102,19 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.onScroll);
+    this.onScroll();
   },
   destroyed() {
-    // eslint-disable-next-line no-console
-    console.log("destroy");
     window.removeEventListener("scroll", this.onScroll);
   },
   methods: {
     onScroll() {
-      // eslint-disable-next-line no-console
-      console.log(this.$el, this.$el.scrollTop);
-      this.$el.scrollTo(0, Math.max(pageYOffset, window.scrollY));
+      const scroll = Math.max(pageYOffset, window.scrollY);
+      const height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      const elapsed = scroll / height;
+      const [from, to] = this.range;
+      const time = Math.min(1, from + elapsed / to);
+      this.$el.scrollTo(0, time * this.height);
     },
     scale(n) {
       n = n <= 0 ? 1 / -n : n;

@@ -4,20 +4,20 @@
     <main class="bg-dark-night">
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center"
-        style="height: 900px;"
+        style="height: 90vh;"
       >
         <header-component />
         <div class="container relative mx-auto">
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <div class="pr-12">
+              <fader-component class="pr-12" :from="0.778" :to="2">
                 <h1 class="text-white font-semibold text-5xl">
                   Hawl with us
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
                   Join to wolf flock to protect your legacy from dangerous environment
                 </p>
-              </div>
+              </fader-component>
             </div>
           </div>
         </div>
@@ -468,12 +468,14 @@
 import NavbarComponent from "../components/Navbar.vue";
 import FooterComponent from "../components/Footer.vue";
 import HeaderComponent from "../components/Header.vue";
+import FaderComponent from "../components/Fader.vue";
 
 export default {
   name: "landing-page",
   components: {
     NavbarComponent,
     FooterComponent,
+    FaderComponent,
     HeaderComponent
   }
 };
