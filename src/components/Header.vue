@@ -10,11 +10,11 @@
       <montains1-component v-bind="layerStyles[1]"></montains1-component>
       <land-component v-bind="layerStyles[2]"></land-component>
       <forest7-component v-bind="layerStyles[3]"></forest7-component>
-      <forest6-component v-bind="layerStyles[4]"></forest6-component>
-      <forest5-component v-bind="layerStyles[5]"></forest5-component>
-      <forest4-component v-bind="layerStyles[6]"></forest4-component>
-      <forest3-component v-bind="layerStyles[7]"></forest3-component>
-      <forest2-component v-bind="layerStyles[8]"></forest2-component>
+      <forest6-component v-if="false" v-bind="layerStyles[4]"></forest6-component>
+      <forest5-component v-if="false" v-bind="layerStyles[5]"></forest5-component>
+      <forest4-component v-if="false" v-bind="layerStyles[6]"></forest4-component>
+      <forest3-component v-if="false" v-bind="layerStyles[7]"></forest3-component>
+      <forest2-component v-if="false" v-bind="layerStyles[8]"></forest2-component>
       <forest1-component v-bind="layerStyles[9]"></forest1-component>
       <tree2-component v-bind="layerStyles[10]"></tree2-component>
       <tree1-component v-bind="layerStyles[11]"></tree1-component>
@@ -87,7 +87,7 @@ export default {
         place(48, 10, 1)
       ],
       range: [0, 1],
-      height: 2000
+      height: 1300
     };
   },
   computed: {
@@ -116,10 +116,13 @@ export default {
     onScroll() {
       const scroll = Math.max(pageYOffset, window.scrollY);
       const height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-      const elapsed = scroll / height;
+      const elapsed = scroll / height / 0.25; // scroll to first header
       const [from, to] = this.range;
       const time = Math.min(1, from + elapsed / to);
-      this.$el.scrollTo(0, time * this.height);
+      const ratio = 1;//height / 960;
+      // eslint-disable-next-line no-console
+      console.log(elapsed, time,  time * this.height * ratio);
+      this.$el.scrollTo(0, time * this.height * ratio);
     },
     scale(n) {
       n = n <= 0 ? 1 / -n : n;
