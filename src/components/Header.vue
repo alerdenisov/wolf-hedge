@@ -1,15 +1,15 @@
 <template>
   <div class="parallax-root absolute top-0 w-full h-full">
-    <sky-component
+    <!-- <sky-component
       class="fixed inset-0 parallax parallax--fixed"
       data-key="underStyles"
-    ></sky-component>
+    ></sky-component> -->
     <div class="moon top-0 parallax__layer z-2" data-key="moonStyles"></div>
     <!-- <div class="parallax-group"> -->
-    <montains2-component
+    <!-- <montains2-component
       class="parallax__layer"
       data-key="underStyles"
-    ></montains2-component>
+    ></montains2-component> -->
     <logo-component
       class="logo parallax__layer"
       data-key="logoStyles"
@@ -18,12 +18,12 @@
       class="logo logo--reversed parallax__layer"
       data-key="logoReversedStyles"
     ></logo-component>
-    <montains1-component
+    <!-- <montains1-component
       class="parallax__layer"
       data-key="underStyles"
-    ></montains1-component>
+    ></montains1-component> -->
     <land-component class="parallax__layer" data-key="underStyles"></land-component>
-    <forest7-component
+    <!-- <forest7-component
       class="parallax__layer"
       data-key="underStyles"
     ></forest7-component>
@@ -58,7 +58,7 @@
     <tree1-component
       class="parallax__layer"
       data-key="overlayStyles"
-    ></tree1-component>
+    ></tree1-component> -->
     <wolf-component
       class="parallax__layer"
       data-key="wolfStyles"
@@ -78,19 +78,19 @@
 </template>
 
 <script>
-import SkyComponent from "./layers/Sky";
-import Montains2Component from "./layers/Montains2";
-import Montains1Component from "./layers/Montains1";
 import LandComponent from "./layers/Land";
-import Forest7Component from "./layers/Forest7";
-import Forest6Component from "./layers/Forest6";
-import Forest5Component from "./layers/Forest5";
-import Forest4Component from "./layers/Forest4";
-import Forest3Component from "./layers/Forest3";
-import Forest2Component from "./layers/Forest2";
-import Forest1Component from "./layers/Forest1";
-import Tree2Component from "./layers/Tree2";
-import Tree1Component from "./layers/Tree1";
+// import SkyComponent from "./layers/Sky";
+// import Montains2Component from "./layers/Montains2";
+// import Montains1Component from "./layers/Montains1";
+// import Forest7Component from "./layers/Forest7";
+// import Forest6Component from "./layers/Forest6";
+// import Forest5Component from "./layers/Forest5";
+// import Forest4Component from "./layers/Forest4";
+// import Forest3Component from "./layers/Forest3";
+// import Forest2Component from "./layers/Forest2";
+// import Forest1Component from "./layers/Forest1";
+// import Tree2Component from "./layers/Tree2";
+// import Tree1Component from "./layers/Tree1";
 import WolfComponent from "./layers/Wolf";
 import LogoComponent from "./layers/Logo";
 
@@ -101,19 +101,19 @@ export default {
   components: {
     WolfComponent,
     LogoComponent,
-    Tree1Component,
-    Tree2Component,
-    Forest1Component,
-    Forest2Component,
-    Forest3Component,
-    Forest4Component,
-    Forest5Component,
-    Forest6Component,
-    Forest7Component,
     LandComponent,
-    Montains1Component,
-    Montains2Component,
-    SkyComponent
+    // Tree1Component,
+    // Tree2Component,
+    // Forest1Component,
+    // Forest2Component,
+    // Forest3Component,
+    // Forest4Component,
+    // Forest5Component,
+    // Forest6Component,
+    // Forest7Component,
+    // Montains1Component,
+    // Montains2Component,
+    // SkyComponent
   },
   data() {
     return {
@@ -280,6 +280,7 @@ body {
   z-index: 1;
   position: absolute;
   transform: translateX(-50%);
+  display: block;
   /* transition: transform 0.1s linear; */
 }
 .parallax {

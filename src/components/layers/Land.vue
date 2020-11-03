@@ -1,5 +1,7 @@
 <template>
+  <img src="../../assets/img/layer-0-50.jpg" alt="" class="fixed top-0 parallax" v-if="true">
   <svg
+    v-else
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
