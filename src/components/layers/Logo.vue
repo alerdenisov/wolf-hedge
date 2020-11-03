@@ -5,8 +5,8 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
     y="0px"
-    viewBox="0 0 1366 1600"
-    style="enable-background:new 0 0 1366 1100;"
+    viewBox="0 262 1366 110"
+    style="enable-background:new 0 262 1366 110;"
     xml:space="preserve"
     class="fixed top-0 parallax"
   >

@@ -4,7 +4,7 @@
     <main class="bg-dark-night">
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center"
-        style="height: 120vh;"
+        style="height: 1300px;"
       >
         <header-component />
         <div class="container relative mx-auto" style="margin-top: -30vh">
@@ -15,7 +15,8 @@
                   Hawl with us
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
-                  Join to wolf flock to protect your legacy from dangerous environment
+                  Join to wolf flock to protect your legacy from dangerous
+                  environment
                 </p>
               </fader-component>
             </div>
@@ -42,14 +43,14 @@
             ></polygon>
           </svg>
         </div>
-        <div class="container mx-auto px-4 lg:pb-64" style="margin-top: -30vh">
+        <div class="container mx-auto px-4 lg:pb-64">
           <div class="flex flex-wrap text-center justify-center">
             <fader-component class="w-full lg:w-6/12 px-4" :from="0.12" :to="2">
-              <h2 class="text-4xl font-semibold text-white">Build something</h2>
+              <h2 class="text-4xl font-semibold text-white">Hawl with us</h2>
               <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                Put the potentially record low maximum sea ice extent tihs year
-                down to low ice. According to the National Oceanic and
-                Atmospheric Administration, Ted, Scambos.
+                Fully Decentralized Autonomous organization cooperating as per
+                the transparent rules coded in Ethereum smart-contracts to
+                govern Wolfage Finance Ecosystem by WEFI token holders.
               </p>
             </fader-component>
           </div>
@@ -58,28 +59,29 @@
               <div
                 class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
               >
-                <i class="fas fa-medal text-xl"></i>
+                <i class="fas fa-chart-line text-xl"></i>
               </div>
               <h6 class="text-xl mt-5 font-semibold text-white">
-                Excelent Services
+                Unique ecomonic
               </h6>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Unique economic model aimed at attracting additional liquidity
+                and value growth.
               </p>
             </div>
             <div class="w-full lg:w-3/12 px-4 text-center">
               <div
                 class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
               >
-                <i class="fas fa-poll text-xl"></i>
+                <i class="fas fa-star text-xl"></i>
               </div>
               <h5 class="text-xl mt-5 font-semibold text-white">
-                Grow your market
+                Transparent and secure
               </h5>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Track each transaction of whole ecosystem and that everything is
+                being carried out as per the on-chain and off-chain governance
+                rules.
               </p>
             </div>
             <div class="w-full lg:w-3/12 px-4 text-center">
@@ -88,10 +90,12 @@
               >
                 <i class="fas fa-lightbulb text-xl"></i>
               </div>
-              <h5 class="text-xl mt-5 font-semibold text-white">Launch time</h5>
+              <h5 class="text-xl mt-5 font-semibold text-white">
+                Manipulated by flock
+              </h5>
               <p class="mt-2 mb-4 text-gray-500">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Decentralized governance allows the market to be manipulated in
+                order to generate more profit.
               </p>
             </div>
           </div>
@@ -169,12 +173,16 @@
               <p
                 class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700"
               >
-                Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.
+                Compound is an algorithmic, autonomous interest rate protocol
+                built for developers, to unlock a universe of open financial
+                applications.
               </p>
               <p
                 class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700"
               >
-                Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a universe of open financial applications.
+                Compound is an algorithmic, autonomous interest rate protocol
+                built for developers, to unlock a universe of open financial
+                applications.
               </p>
               <a
                 href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
@@ -205,12 +213,19 @@
                     ></polygon>
                   </svg>
                   <h4 class="text-xl font-bold text-white">
-                    Top Notch Services
+                    Breed cubs
                   </h4>
                   <p class="text-md font-light mt-2 text-white">
-                    The Arctic Ocean freezes every winter and much of the
-                    sea-ice then thaws every summer, and that process will
-                    continue whatever happens.
+                    Earn extra value from breeding NFT tokens of unique cubs
+                  </p>
+                  <p class="text-md font-light mt-5 text-white">
+                    <button
+                      class="bg-white text-gray-800 hover:bg-transparent active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none"
+                      type="button"
+                      style="transition: all 0.15s ease 0s;"
+                    >
+                      More details
+                    </button>
                   </p>
                 </blockquote>
               </div>
@@ -241,7 +256,7 @@ export default {
 
 <style>
 .bg-dark-night {
-  background-color: #1B1230;
-  fill: #1B1230
+  background-color: #1b1230;
+  fill: #1b1230;
 }
 </style>

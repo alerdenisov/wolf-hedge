@@ -2,31 +2,78 @@
   <div class="parallax-root absolute top-0 w-full h-full">
     <sky-component
       class="fixed inset-0 parallax parallax--fixed"
+      data-key="underStyles"
     ></sky-component>
-    <div class="moon fixed top-0 z-6"></div>
-    <div class="parallax-group">
-      <montains2-component v-bind="layerStyles[0]"></montains2-component>
-      <logo-component v-bind="layerStyles[13]"></logo-component>
-      <montains1-component v-bind="layerStyles[1]"></montains1-component>
-      <land-component v-bind="layerStyles[2]"></land-component>
-      <forest7-component v-bind="layerStyles[3]"></forest7-component>
-      <forest6-component v-if="false" v-bind="layerStyles[4]"></forest6-component>
-      <forest5-component v-if="false" v-bind="layerStyles[5]"></forest5-component>
-      <forest4-component v-if="false" v-bind="layerStyles[6]"></forest4-component>
-      <forest3-component v-if="false" v-bind="layerStyles[7]"></forest3-component>
-      <forest2-component v-if="false" v-bind="layerStyles[8]"></forest2-component>
-      <forest1-component v-bind="layerStyles[9]"></forest1-component>
-      <tree2-component v-bind="layerStyles[10]"></tree2-component>
-      <tree1-component v-bind="layerStyles[11]"></tree1-component>
-      <wolf-component v-bind="layerStyles[12]"></wolf-component>
-    </div>
-    <div class="night-shadow fixed top-0"></div>
-    <div v-if="false" class="configurator fixed z-50 left-0 top-0 bg-white">
+    <div class="moon top-0 parallax__layer z-2" data-key="moonStyles"></div>
+    <!-- <div class="parallax-group"> -->
+    <montains2-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></montains2-component>
+    <logo-component
+      class="logo parallax__layer"
+      data-key="logoStyles"
+    ></logo-component>
+    <logo-component
+      class="logo logo--reversed parallax__layer"
+      data-key="logoReversedStyles"
+    ></logo-component>
+    <montains1-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></montains1-component>
+    <land-component class="parallax__layer" data-key="underStyles"></land-component>
+    <forest7-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest7-component>
+    <forest6-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest6-component>
+    <forest5-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest5-component>
+    <forest4-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest4-component>
+    <forest3-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest3-component>
+    <forest2-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest2-component>
+    <forest1-component
+      class="parallax__layer"
+      data-key="underStyles"
+    ></forest1-component>
+    <tree2-component
+      class="parallax__layer"
+      data-key="overlayStyles"
+    ></tree2-component>
+    <tree1-component
+      class="parallax__layer"
+      data-key="overlayStyles"
+    ></tree1-component>
+    <wolf-component
+      class="parallax__layer"
+      data-key="wolfStyles"
+    ></wolf-component>
+    <!-- </div> -->
+    <div class="night-shadow fixed top-0" data-key="faderStyles"></div>
+    <!-- <div class="configurator fixed z-50 left-0 top-0 bg-white">
+      <pre>{{progress}}</pre>
       <div class="layer" v-for="(place, index) in layers" :key="index">
         <input type="range" v-model="place.layer" min="0" max="50" />
       </div>
+      <input type="range" v-model="size" min="0" max="50" />
+      <input type="range" v-model="perspective" min="0" max="50" />
       <pre>{{ configuration }}</pre>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -48,7 +95,7 @@ import WolfComponent from "./layers/Wolf";
 import LogoComponent from "./layers/Logo";
 
 function place(layer, offset, index) {
-  return { layer, offset, index};
+  return { layer, offset, index };
 }
 export default {
   components: {
@@ -71,34 +118,38 @@ export default {
   data() {
     return {
       layers: [
-        place(1, 10, 2),
-        place(1, 10, 2),
-        place(4, 10, 2),
-        place(6, 10, 2),
-        place(9, 10, 2),
-        place(11, 10, 2),
-        place(16, 10, 2),
-        place(18, 10, 2),
-        place(23, 10, 2),
-        place(28, 10, 2),
-        place(35, 10, 2),
-        place(45, 10, 2),
-        place(45, 10, 2),
-        place(48, 10, 1)
+        place(1, 10, 1), // 0
+        place(1, 10, 1), // 1
+        place(4, 10, 1), // 2
+        place(6, 10, 1), // 3
+        place(9, 10, 3), // 4
+        place(11, 10, 3), // 5
+        place(16, 10, 3), // 6
+        place(18, 10, 3), // 7
+        place(23, 10, 3), // 8
+        place(28, 10, 3), // 9
+        place(35, 10, 3), // 10
+        place(45, 10, 3), // 11
+        place(45, 10, 3), // 12
+        place(48, 10, 2) // 13
       ],
       range: [0, 1],
-      height: 1300
+      height: 1500,
+      progress: 0,
+      perspective: 50,
+      size: 20,
+
+      els: {
+        underStyles: [],
+        moonStyles: [],
+        logoStyles: [],
+        logoReversedStyles: [],
+        wolfStyles: [],
+        faderStyles: [],
+      }
     };
   },
   computed: {
-    layerStyles() {
-      return this.layers.map((place) => ({
-        style: {
-          "z-index": place.index.toString(),
-          transform: this.level(place.layer, place.offset)
-        }
-      }));
-    },
     configuration() {
       return this.layers
         .map(place => `place(${place.layer}, ${place.offset})`)
@@ -106,36 +157,62 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener("scroll", this.onScroll);
+    Object.keys(this.els).forEach(key => {
+      this.els[key] = Array.from(this.$el.querySelectorAll(`[data-key=${key}]`))
+    })
+    window.addEventListener("scroll", this.onScroll)
     this.onScroll();
   },
   destroyed() {
-    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("scroll", this.onScroll)
   },
   methods: {
     onScroll() {
       const scroll = Math.max(pageYOffset, window.scrollY);
-      const height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-      const elapsed = scroll / height / 0.25; // scroll to first header
       const [from, to] = this.range;
+      const elapsed = scroll / this.height;
       const time = Math.min(1, from + elapsed / to);
-      const ratio = 1;//height / 960;
-      // eslint-disable-next-line no-console
-      console.log(elapsed, time,  time * this.height * ratio);
-      this.$el.scrollTo(0, time * this.height * ratio);
+      this.progress = time;
+
+      Object.keys(this.els).forEach(key => {
+        this.els[key].forEach(el => (el.style.cssText = this[key]()));
+      });
+    },
+
+    underStyles() {
+      return `z-index: 0; opacity: ${1 - Math.min(1, this.progress / 0.29)}`
+    },
+    moonStyles() {
+      return `z-index: 1; top: ${(this.progress > 0.29 ? this.height * 0.29 : 0)}px; position: ${this.progress > 0.29 ? "absolute" : "fixed"}`
+    },
+    logoStyles() {
+      return `opacity: ${1 - Math.min(1, this.progress / 0.29)}; top: ${(295 + (this.progress > 0.29 ? this.height * 0.29 : 0))}px; position: ${this.progress > 0.29 ? "absolute" : "fixed"}`
+    },
+    logoReversedStyles() {
+      return `z-index: 2; opacity: ${Math.min(1, this.progress / 0.29)}; top: ${(295 + (this.progress > 0.29 ? this.height * 0.29 : 0))}px; position: ${this.progress > 0.29 ? "absolute" : "fixed"}`
+    },
+    wolfStyles() {
+      return `z-index: 3`
+    },
+    faderStyles() {
+      return `opacity: ${1 - Math.max(0, Math.min(1, (this.progress - 0.5) / 0.5))}`
     },
     scale(n) {
       n = n <= 0 ? 1 / -n : n;
       return (1 / n) * 10;
     },
-    level(n, o) {
-      const LEVEL_SIZE = 1;
-      const PERSPECTIVE = 60;
-      const OFFSET_PER_LEVEL = 20;
-      let distance = n * LEVEL_SIZE;
-      let scale = 1 + (distance * -1) / PERSPECTIVE;
-      let offset = o * OFFSET_PER_LEVEL;
-      return `translateX(-50%) scale(${scale}) translateZ(${distance}px) translateY(${offset}px)`;
+    level(t, n) {
+      t *= 2;
+      n *= 0.5;
+      const PERSPECTIVE = this.perspective;
+      const distance = n * this.size;
+      const scale = 1 + ((PERSPECTIVE - distance) * -1) / PERSPECTIVE;
+      const shift = this.height * (1 - t) * scale;
+      return `translate3d(-50%, ${shift.toFixed(2)}px, 0)`;
+      // const LEVEL_SIZE = 1;
+      // let scale = 1 + (distance * -1) / PERSPECTIVE;
+      // let offset = o * OFFSET_PER_LEVEL;
+      // return `translateX(-50%) scale(${scale}) translateZ(${distance}px) translateY(${offset}px)`;
     }
   }
 };
@@ -143,8 +220,8 @@ export default {
 
 <style type="text/css">
 body {
-  perspective: 60px;
-  perspective-origin: 50% 74vh;
+  /* perspective: 60px; */
+  /* perspective-origin: 50% 74vh; */
 }
 .night-shadow {
   width: 1280px;
@@ -154,29 +231,57 @@ body {
   left: 50%;
   top: -200px;
   transform: translate3d(-50%, 0, 0);
+  z-index: 4;
 }
 .moon {
-  width: 165px;
-  height: 165px;
+  width: 1280px;
+  height: 1500px;
+  left: 50%;
+}
+.moon::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin: -80px;
+  width: 160px;
+  height: 160px;
   border-radius: 110px;
   background-color: white;
 
   box-shadow: 0 0 250px 3px white;
 
   left: 50%;
-  top: 330px;
-  transform: translate3d(-50%, -50%, 0);
+  top: 295px;
+}
+
+.logo {
+  max-width: 100%;
+  top: 295px;
+  height: 110px;
+  margin-top: -55px;
+}
+
+.logo--reversed * {
+  fill: white !important;
 }
 
 .parallax-root {
   overflow: hidden;
+  pointer-events: none;
 }
 
 .parallax-group {
   position: relative;
   transform-style: preserve-3d;
 }
-
+.parallax__layer {
+  z-index: 1;
+  position: absolute;
+  transform: translateX(-50%);
+  /* transition: transform 0.1s linear; */
+}
 .parallax {
   width: 1280px;
   left: 50%;
