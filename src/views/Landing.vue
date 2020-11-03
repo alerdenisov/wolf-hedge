@@ -10,7 +10,7 @@
         <div class="container relative mx-auto" style="margin-top: -30vh">
           <div class="items-center flex flex-wrap">
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <fader-component class="pr-12" :from="0.72" :to="2">
+              <fader-component class="pt-20" :from="0.72" :to="2">
                 <h1 class="text-white font-semibold text-5xl">
                   Hawl with us
                 </h1>
